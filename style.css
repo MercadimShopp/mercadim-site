@@ -1,21 +1,81 @@
-body {
-  font-family: Arial, sans-serif;
-  font-size: 13px;
+/* Reset básico */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background: #f4f4f4;
 }
 
+/* Corpo da página */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  font-size: 14px;
+}
+
+/* ===== MENU LATERAL ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background: #ffffff;
+  padding: 20px;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.15);
+}
+
+nav.active {
+  left: 0;
+}
+
+nav h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  margin-bottom: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+/* ===== OVERLAY ===== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  z-index: 900;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* ===== HEADER ===== */
 header {
-  height: 60px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
-  z-index: 100;
+  background: #ffffff;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 800;
 }
 
 .menu-btn {
@@ -24,88 +84,49 @@ header {
 }
 
 .logo {
-  margin-left: 20px;
+  font-size: 20px;
   font-weight: bold;
-  font-size: 18px;
 }
 
+/* ===== TAGLINE ===== */
 .tagline {
   text-align: center;
-  padding: 20px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
+  margin: 15px 10px;
+  color: #555;
 }
 
+/* ===== GRID DE PRODUTOS ===== */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  padding: 15px;
 }
 
+/* ===== CARD ===== */
 .card {
-  background: #fff;
-  padding: 15px;
+  background: #ffffff;
   border-radius: 8px;
+  padding: 10px;
+  text-align: center;
   text-decoration: none;
-  color: #333;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.2s;
+  color: #000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
 }
 
 .card img {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .card span {
-  margin-top: 10px;
-  font-size: 16px;
+  display: block;
+  margin-top: 8px;
   font-weight: bold;
 }
-
-nav {
-  position: fixed;
-  top: 0;
-  left: -260px;
-  width: 260px;
-  height: 100%;
-  background: #fff;
-  box-shadow: 2px 0 8px rgba(0,0,0,0.2);
-  padding: 20px;
-  transition: 0.3s;
-  z-index: 200;
-}
-
-nav.active { left: 0; }
-
-nav h3 { margin-bottom: 12px; }
-
-nav ul { list-style: none; padding: 0; }
-nav li { margin: 10px 0; }
-
-nav a {
-  text-decoration: none;
-  color: #333;
-  font-size: 15px;
-}
-
-.overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  z-index: 150;
-}
-
-.overlay.active { display: block; }
 
