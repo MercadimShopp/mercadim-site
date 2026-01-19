@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mercadim Shopp</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav id="menu">
+    <h3>Categorias</h3>
+    <ul>
+      <li><a href="#">Achadinhos do Dia</a></li>
+      <li><a href="#">Eletrônicos</a></li>
+      <li><a href="#">Casa & Cozinha</a></li>
+      <li><a href="#">Moda Masculina</a></li>
+      <li><a href="#">Moda Feminina</a></li>
+      <li><a href="#">Beleza & Cuidados</a></li>
+      <li><a href="#">Utilidades</a></li>
+      <li><a href="#">Presentes Criativos</a></li>
+    </ul>
+  </nav>
+
+  <div class="overlay" id="overlay"></div>
+
+  <header>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="logo">Mercadim Shopp</div>
+  </header>
+
+  <div class="tagline">Achadinhos e ofertas selecionadas para você</div>
+
+  <section class="grid">
+    <a class="card" href="https://s.shopee.com.br/gJuvkP1a0" target="_blank">
+      <img src="https://via.placeholder.com/300x300?text=Produto" alt="Robô Aspirador de Pó" />
+      <span>Robô Aspirador de Pó</span>
+    </a>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('active');
+      document.getElementById('overlay').classList.toggle('active');
+    }
+
+    document.getElementById('overlay').onclick = toggleMenu;
+  </script>
+</body>
+</html>
