@@ -31,14 +31,12 @@
 
   <div class="tagline">Achadinhos e ofertas selecionadas para você</div>
 
-  <section class="grid">
-    <a class="card" href="https://s.shopee.com.br/gJuvkP1a0" target="_blank">
-      <img src="https://via.placeholder.com/300x300?text=Produto" alt="Robô Aspirador de Pó" />
-      <span>Robô Aspirador de Pó</span>
-    </a>
-  </section>
+ <section class="grid" id="product-grid">
+  <!-- Produtos carregados automaticamente via CSV -->
+</section>
 
-  <script>
+
+ <script>
     function toggleMenu() {
       document.getElementById('menu').classList.toggle('active');
       document.getElementById('overlay').classList.toggle('active');
@@ -46,5 +44,7 @@
 
     document.getElementById('overlay').onclick = toggleMenu;
   </script>
+
+  <script src="js/load-products.js"></script>
 </body>
 </html>
