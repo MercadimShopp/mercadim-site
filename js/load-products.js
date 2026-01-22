@@ -1,67 +1,132 @@
-fetch("data/casa-cozinha.csv")
-  .then(response => response.text())
-  .then(csv => {
-    const linhas = csv.split("\n");
-    const grid = document.getElementById("product-grid");
+<script>
+/**
+ * Categoria inicial
+ */
+const DEFAULT_CATEGORY = 'achadinhos-do-dia';
 
-    // Remove cabeçalho
-    const cabecalho = linhas.shift().split(",");
+/**
+ * Função principal para carregar uma categoria
+ */
+function loadCategory(category) {
+  const grid = document.getElementById('product-grid');
+  grid.innerHTML = '<p>Carregando produtos...</p>';
 
-    // Localiza os índices das colunas que vamos usar
-    const idxId = cabecalho.indexOf("item id");
-    const idxName = cabecalho.indexOf("item name");
-    const idxPrice = cabecalho.indexOf("price");
-    const idxOffer = cabecalho.indexOf("offer link");
+  const csvPath = `data/${category}.csv`;
+  const imagePath = `images/${category}/`;
 
-    linhas.forEach(linha => {
-      if (!linha.trim()) return;
-
-      // Parser simples respeitando aspas
-      const colunas = linha.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g);
-      if (!colunas) return;
-
-      const itemId = colunas[idxId]?.replace(/"/g, "").trim();
-      const itemName = colunas[idxName]?.replace(/"/g, "").trim();
-      const priceRaw = colunas[idxPrice]?.replace(/"/g, "").trim();
-      const offerLink = colunas[idxOffer]?.replace(/"/g, "").trim();
-
-      if (!itemId || !offerLink) return;
-
-      const price = Number(priceRaw).toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL"
-      });
-
-      const card = document.createElement("a");
-      card.className = "card";
-      card.href = offerLink;
-      card.target = "_blank";
-
-      const img = document.createElement("img");
-      img.alt = itemName;
-
-      const basePath = `images/casa-cozinha/${itemId}`;
-      img.src = `${basePath}.webp`;
-
-      img.onerror = () => {
-        img.src = `${basePath}.jpg`;
-        img.onerror = () => {
-          img.src = `${basePath}.png`;
-        };
-      };
-
-      const title = document.createElement("span");
-      title.textContent = itemName;
-
-      const priceEl = document.createElement("span");
-      priceEl.className = "price";
-      priceEl.textContent = price;
-
-      card.appendChild(img);
-      card.appendChild(title);
-      card.appendChild(priceEl);
-
-      grid.appendChild(card);
+  fetch(csvPath)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('CSV não encontrado');
+      }
+      return response.text();
+    })
+    .then(csvText => {
+      const products = parseCSV(csvText);
+      if (products.length === 0) {
+        grid.innerHTML = '<p>Nenhum produto disponível no momento.</p>';
+        return;
+      }
+      renderProducts(products, imagePath);
+    })
+    .catch(() => {
+      grid.innerHTML = '<p>Novas ofertas em breve 🚀</p>';
     });
-  })
-  .catch(err => console.error("Erro ao carregar produtos:", err));
+}
+
+/**
+ * Parser de CSV robusto (aceita vírgulas dentro de campos)
+ */
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  const headers = splitCSVLine(lines[0]);
+
+  return lines.slice(1).map(line => {
+    const values = splitCSVLine(line);
+    let obj = {};
+    headers.forEach((h, i) => {
+      obj[h.trim()] = values[i] ? values[i].trim() : '';
+    });
+    return obj;
+  });
+}
+
+/**
+ * Divide linha CSV respeitando aspas
+ */
+function splitCSVLine(line) {
+  const regex = /(".*?"|[^",\s]+)(?=\s*,|\s*$)/g;
+  return line.match(regex)?.map(v => v.replace(/^"|"$/g, '')) || [];
+}
+
+/**
+ * Renderiza os cards
+ */
+function renderProducts(products, imagePath) {
+  const grid = document.getElementById('product-grid');
+  grid.innerHTML = '';
+
+  products.forEach(p => {
+    const id = p['item id'];
+    const name = p['item name'];
+    const price = formatPrice(p['price']);
+    const link = p['offer link'];
+
+    const card = document.createElement('a');
+    card.className = 'card';
+    card.href = link;
+    card.target = '_blank';
+
+    const img = document.createElement('img');
+    img.alt = name;
+    loadImageWithFallback(img, imagePath, id);
+
+    const title = document.createElement('span');
+    title.textContent = name;
+
+    const priceTag = document.createElement('strong');
+    priceTag.textContent = price;
+
+    card.appendChild(img);
+    card.appendChild(title);
+    card.appendChild(priceTag);
+    grid.appendChild(card);
+  });
+}
+
+/**
+ * Tenta carregar imagem webp → jpg → png
+ */
+function loadImageWithFallback(img, basePath, id) {
+  const extensions = ['webp', 'jpg', 'png'];
+  let index = 0;
+
+  function tryNext() {
+    if (index >= extensions.length) return;
+    img.src = `${basePath}${id}.${extensions[index++]}`;
+    img.onerror = tryNext;
+  }
+
+  tryNext();
+}
+
+/**
+ * Formata preço para BR
+ */
+function formatPrice(value) {
+  const num = parseFloat(value);
+  if (isNaN(num)) return '';
+  return num.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  });
+}
+
+/**
+ * Carrega categoria inicial
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  loadCategory(DEFAULT_CATEGORY);
+});
+</script>
+
