@@ -1,85 +1,62 @@
-const grid = document.getElementById("product-grid");
-
-let categoriaAtual = "casa-cozinha";
-
-/**
- * Parser CSV que respeita aspas
- */
-function parseCSV(text) {
-  const linhas = [];
-  let linha = [];
-  let campo = "";
-  let dentroAspas = false;
-
-  for (let i = 0; i < text.length; i++) {
-    const char = text[i];
-    const next = text[i + 1];
-
-    if (char === '"' && dentroAspas && next === '"') {
-      campo += '"';
-      i++;
-    } else if (char === '"') {
-      dentroAspas = !dentroAspas;
-    } else if (char === "," && !dentroAspas) {
-      linha.push(campo);
-      campo = "";
-    } else if ((char === "\n" || char === "\r") && !dentroAspas) {
-      if (campo || linha.length) {
-        linha.push(campo);
-        linhas.push(linha);
-        linha = [];
-        campo = "";
-      }
-    } else {
-      campo += char;
-    }
-  }
-
-  if (campo || linha.length) {
-    linha.push(campo);
-    linhas.push(linha);
-  }
-
-  return linhas;
-}
-
 function carregarCategoria(categoria) {
-  categoriaAtual = categoria;
-  grid.innerHTML = "";
+  const grid = document.getElementById('product-grid');
+  grid.innerHTML = '';
 
   fetch(`data/${categoria}.csv`)
-    .then(res => res.text())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('CSV não encontrado');
+      }
+      return response.text();
+    })
     .then(text => {
-      const dados = parseCSV(text);
+      const linhas = text.split('\n').slice(1); // ignora cabeçalho
 
-      // remove cabeçalho
-      dados.slice(1).forEach(colunas => {
-        const itemId = colunas[0]?.trim();
-        const nome = colunas[1]?.trim();
-        const preco = colunas[2]?.trim();
-        const link = colunas[colunas.length - 1]?.trim();
+      linhas.forEach(linha => {
+        if (!linha.trim()) return;
 
-        if (!itemId || !nome || !preco || !link) return;
+        // Parser simples respeitando aspas
+        const campos = linha.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
+        if (!campos || campos.length < 9) return;
 
-        const card = document.createElement("a");
-        card.href = link;
-        card.target = "_blank";
-        card.className = "card";
+        const itemId = campos[0];
+        const itemName = campos[1];
+        const price = campos[2].replace(/"/g, '');
+        const offerLink = campos[8];
 
-        card.innerHTML = `
-          <img src="images/${categoria}/${itemId}.jpg"
-               onerror="this.onerror=null;this.src='images/${categoria}/${itemId}.webp';">
-          <div class="info">
-            <h4>${nome}</h4>
-            <p class="price">R$ ${preco}</p>
-          </div>
-        `;
+        const card = document.createElement('a');
+        card.className = 'card';
+        card.href = offerLink;
+        card.target = '_blank';
+
+        const img = document.createElement('img');
+
+        const basePath = `images/${categoria}/${itemId}`;
+        img.src = `${basePath}.webp`;
+        img.onerror = () => {
+          img.onerror = null;
+          img.src = `${basePath}.jpg`;
+          img.onerror = () => {
+            img.onerror = null;
+            img.src = `${basePath}.png`;
+          };
+        };
+
+        const name = document.createElement('span');
+        name.textContent = itemName;
+
+        const priceEl = document.createElement('strong');
+        priceEl.textContent = `R$ ${price}`;
+
+        card.appendChild(img);
+        card.appendChild(name);
+        card.appendChild(priceEl);
 
         grid.appendChild(card);
       });
     })
-    .catch(err => console.error("Erro CSV:", err));
+    .catch(err => {
+      console.error(err);
+      grid.innerHTML = '<p>Erro ao carregar produtos.</p>';
+    });
 }
-
-// carrega página inicial
-carregarCategoria(categoriaAtual);
