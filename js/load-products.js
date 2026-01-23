@@ -2,7 +2,7 @@ function carregarCategoria(categoria) {
   const grid = document.getElementById('product-grid');
   grid.innerHTML = '';
 
-  fetch(`data/${categoria}.csv`)
+  fetch('data/' + categoria + '.csv')
     .then(response => {
       if (!response.ok) {
         throw new Error('CSV não encontrado');
@@ -10,19 +10,36 @@ function carregarCategoria(categoria) {
       return response.text();
     })
     .then(text => {
-      const linhas = text.split('\n').slice(1); // ignora cabeçalho
+      const linhas = text.split('\n');
+      linhas.shift(); // remove cabeçalho
 
       linhas.forEach(linha => {
         if (!linha.trim()) return;
 
-        // Parser simples respeitando aspas
-        const campos = linha.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
-        if (!campos || campos.length < 9) return;
+        const campos = [];
+        let atual = '';
+        let dentroAspas = false;
 
-        const itemId = campos[0];
-        const itemName = campos[1];
-        const price = campos[2].replace(/"/g, '');
-        const offerLink = campos[8];
+        for (let i = 0; i < linha.length; i++) {
+          const char = linha[i];
+
+          if (char === '"') {
+            dentroAspas = !dentroAspas;
+          } else if (char === ',' && !dentroAspas) {
+            campos.push(atual);
+            atual = '';
+          } else {
+            atual += char;
+          }
+        }
+        campos.push(atual);
+
+        if (campos.length < 9) return;
+
+        const itemId = campos[0].trim();
+        const itemName = campos[1].trim();
+        const price = campos[2].replace(/"/g, '').trim();
+        const offerLink = campos[8].trim();
 
         const card = document.createElement('a');
         card.className = 'card';
@@ -30,15 +47,15 @@ function carregarCategoria(categoria) {
         card.target = '_blank';
 
         const img = document.createElement('img');
+        const base = 'images/' + categoria + '/' + itemId;
 
-        const basePath = `images/${categoria}/${itemId}`;
-        img.src = `${basePath}.webp`;
-        img.onerror = () => {
-          img.onerror = null;
-          img.src = `${basePath}.jpg`;
-          img.onerror = () => {
-            img.onerror = null;
-            img.src = `${basePath}.png`;
+        img.src = base + '.webp';
+        img.onerror = function () {
+          this.onerror = null;
+          this.src = base + '.jpg';
+          this.onerror = function () {
+            this.onerror = null;
+            this.src = base + '.png';
           };
         };
 
@@ -46,7 +63,7 @@ function carregarCategoria(categoria) {
         name.textContent = itemName;
 
         const priceEl = document.createElement('strong');
-        priceEl.textContent = `R$ ${price}`;
+        priceEl.textContent = 'R$ ' + price;
 
         card.appendChild(img);
         card.appendChild(name);
