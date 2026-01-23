@@ -1,4 +1,3 @@
-<script>
 /**
  * Categoria inicial
  */
@@ -35,7 +34,7 @@ function loadCategory(category) {
 }
 
 /**
- * Parser de CSV robusto (aceita vírgulas dentro de campos)
+ * Parser de CSV (aceita vírgulas dentro de campos)
  */
 function parseCSV(text) {
   const lines = text.trim().split('\n');
@@ -51,17 +50,11 @@ function parseCSV(text) {
   });
 }
 
-/**
- * Divide linha CSV respeitando aspas
- */
 function splitCSVLine(line) {
   const regex = /(".*?"|[^",\s]+)(?=\s*,|\s*$)/g;
   return line.match(regex)?.map(v => v.replace(/^"|"$/g, '')) || [];
 }
 
-/**
- * Renderiza os cards
- */
 function renderProducts(products, imagePath) {
   const grid = document.getElementById('product-grid');
   grid.innerHTML = '';
@@ -94,9 +87,6 @@ function renderProducts(products, imagePath) {
   });
 }
 
-/**
- * Tenta carregar imagem webp → jpg → png
- */
 function loadImageWithFallback(img, basePath, id) {
   const extensions = ['webp', 'jpg', 'png'];
   let index = 0;
@@ -110,9 +100,6 @@ function loadImageWithFallback(img, basePath, id) {
   tryNext();
 }
 
-/**
- * Formata preço para BR
- */
 function formatPrice(value) {
   const num = parseFloat(value);
   if (isNaN(num)) return '';
@@ -122,11 +109,8 @@ function formatPrice(value) {
   });
 }
 
-/**
- * Carrega categoria inicial
- */
 document.addEventListener('DOMContentLoaded', () => {
   loadCategory(DEFAULT_CATEGORY);
 });
-</script>
+
 
