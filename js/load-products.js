@@ -1,23 +1,23 @@
 function carregarCategoria(categoria) {
-  const grid = document.getElementById('product-grid');
-  grid.innerHTML = '';
+  const grid = document.getElementById("product-grid");
+  grid.innerHTML = "";
 
-  fetch('data/' + categoria + '.csv')
-    .then(response => {
+  fetch("data/" + categoria + ".csv")
+    .then(function (response) {
       if (!response.ok) {
-        throw new Error('CSV não encontrado');
+        throw new Error("CSV não encontrado");
       }
       return response.text();
     })
-    .then(text => {
-      const linhas = text.split('\n');
-      linhas.shift(); // remove cabeçalho
+    .then(function (text) {
+      const linhas = text.split("\n");
+      linhas.shift();
 
-      linhas.forEach(linha => {
+      linhas.forEach(function (linha) {
         if (!linha.trim()) return;
 
         const campos = [];
-        let atual = '';
+        let atual = "";
         let dentroAspas = false;
 
         for (let i = 0; i < linha.length; i++) {
@@ -25,9 +25,9 @@ function carregarCategoria(categoria) {
 
           if (char === '"') {
             dentroAspas = !dentroAspas;
-          } else if (char === ',' && !dentroAspas) {
+          } else if (char === "," && !dentroAspas) {
             campos.push(atual);
-            atual = '';
+            atual = "";
           } else {
             atual += char;
           }
@@ -38,32 +38,32 @@ function carregarCategoria(categoria) {
 
         const itemId = campos[0].trim();
         const itemName = campos[1].trim();
-        const price = campos[2].replace(/"/g, '').trim();
+        const price = campos[2].replace(/"/g, "").trim();
         const offerLink = campos[8].trim();
 
-        const card = document.createElement('a');
-        card.className = 'card';
+        const card = document.createElement("a");
+        card.className = "card";
         card.href = offerLink;
-        card.target = '_blank';
+        card.target = "_blank";
 
-        const img = document.createElement('img');
-        const base = 'images/' + categoria + '/' + itemId;
+        const img = document.createElement("img");
+        const base = "images/" + categoria + "/" + itemId;
 
-        img.src = base + '.webp';
+        img.src = base + ".webp";
         img.onerror = function () {
           this.onerror = null;
-          this.src = base + '.jpg';
+          this.src = base + ".jpg";
           this.onerror = function () {
             this.onerror = null;
-            this.src = base + '.png';
+            this.src = base + ".png";
           };
         };
 
-        const name = document.createElement('span');
+        const name = document.createElement("span");
         name.textContent = itemName;
 
-        const priceEl = document.createElement('strong');
-        priceEl.textContent = 'R$ ' + price;
+        const priceEl = document.createElement("strong");
+        priceEl.textContent = "R$ " + price;
 
         card.appendChild(img);
         card.appendChild(name);
@@ -72,8 +72,8 @@ function carregarCategoria(categoria) {
         grid.appendChild(card);
       });
     })
-    .catch(err => {
+    .catch(function (err) {
       console.error(err);
-      grid.innerHTML = '<p>Erro ao carregar produtos.</p>';
+      grid.innerHTML = "<p>Erro ao carregar produtos.</p>";
     });
 }
