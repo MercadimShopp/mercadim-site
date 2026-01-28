@@ -168,7 +168,8 @@ header {
 }
 
 .site-logo {
-  width: 90px; /* largura padrão */
+  width: 90px; /* largura padrão para desktop */
+  max-width: 100%;
   height: auto;
   display: block;
 }
@@ -180,9 +181,15 @@ header {
 }
 
 /* Ajustes responsivos */
-@media (max-width: 600px) {
-  .site-logo { width: 100px; }
-  .site-title { font-size: 18px; }
+/* celulares muito pequenos */
+@media (max-width: 420px) {
+  .site-logo { width: 56px; }
+  .site-title { font-size: 16px; }
 }
 
+/* tablets pequenos / celulares maiores */
+@media (max-width: 600px) and (min-width: 421px) {
+  .site-logo { width: 72px; }
+  .site-title { font-size: 18px; }
+}
 
