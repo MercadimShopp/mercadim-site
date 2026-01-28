@@ -168,7 +168,7 @@ header {
 }
 
 .site-logo {
-  width: 140px; /* largura padrão */
+  width: 90px; /* largura padrão */
   height: auto;
   display: block;
 }
@@ -181,7 +181,7 @@ header {
 
 /* Ajustes responsivos */
 @media (max-width: 600px) {
-  .site-logo { width: 60px; }
+  .site-logo { width: 100px; }
   .site-title { font-size: 18px; }
 }
 
