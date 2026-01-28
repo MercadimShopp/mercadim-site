@@ -181,7 +181,7 @@ header {
 
 /* Ajustes responsivos */
 @media (max-width: 600px) {
-  .site-logo { width: 100px; }
+  .site-logo { width: 60px; }
   .site-title { font-size: 18px; }
 }
 
