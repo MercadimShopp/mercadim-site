@@ -80,7 +80,13 @@ header {
 
 /* Afastar o botão do menu da borda */
 .menu-btn {
-  margin-left: 12px; /* ajuste este valor conforme preferir (ex.: 8px, 16px) */
+  margin-left: 12px;
+  font-size: 32px;
+  cursor: pointer;
+  background: #0077cc;   /* cor de fundo */
+  color: #fff;           /* cor do ícone */
+  padding: 6px 10px;     /* espaço interno */
+  border-radius: 6px;    /* cantos arredondados */
 }
 
 .logo {
