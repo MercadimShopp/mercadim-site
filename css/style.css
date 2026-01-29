@@ -78,9 +78,9 @@ header {
   z-index: 800;
 }
 
+/* Afastar o botão do menu da borda */
 .menu-btn {
-  font-size: 24px;
-  cursor: pointer;
+  margin-left: 12px; /* ajuste este valor conforme preferir (ex.: 8px, 16px) */
 }
 
 .logo {
