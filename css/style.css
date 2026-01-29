@@ -81,7 +81,7 @@ header {
 /* Afastar o botão do menu da borda */
 .menu-btn {
   margin-left: 12px;
-  font-size: 32px;
+  font-size: 26px;
   cursor: pointer;
   background: #0077cc;   /* cor de fundo */
   color: #fff;           /* cor do ícone */
