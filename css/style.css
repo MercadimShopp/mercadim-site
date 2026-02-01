@@ -101,6 +101,41 @@ header {
   color: #555;
 }
 
+/* ===== BANNER DE INSTALAÇÃO ===== */
+.install-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #0077cc;
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 14px;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.install-banner button {
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 6px 14px;
+}
+
+#install-btn {
+  background: #fff;
+  color: #0077cc;
+  font-weight: bold;
+}
+
+#install-close {
+  background: transparent;
+  color: #fff;
+  font-size: 20px;
+  padding: 2px 8px;
+}
+
 /* ===== GRID DE PRODUTOS ===== */
 .grid {
   display: grid;

@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mercadim Shopp</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0077cc" />
+  <link rel="apple-touch-icon" href="images/logo.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Mercadim Shopp" />
 </head>
 <body>
 
@@ -34,6 +40,12 @@
 
   </header>
 
+  <div id="install-banner" class="install-banner" style="display:none;">
+    <span>Adicione o Mercadim na sua tela inicial!</span>
+    <button id="install-btn">Adicionar</button>
+    <button id="install-close" aria-label="Fechar">&times;</button>
+  </div>
+
   <div class="tagline">Achadinhos e ofertas selecionadas para você</div>
 <div class="price-disclaimer" role="note" aria-label="Aviso sobre preços">
   Os preços apresentados nos cards têm caráter meramente informativo e podem divergir dos valores praticados pelo vendedor no momento da compra. Consulte a página do vendedor para confirmação de preço, disponibilidade, frete e impostos.
@@ -54,5 +66,30 @@
   </script>
 
   <script src="js/load-products.js"></script>
+  <script>
+    let deferredPrompt;
+    const banner = document.getElementById('install-banner');
+    const installBtn = document.getElementById('install-btn');
+    const closeBtn = document.getElementById('install-close');
+
+    window.addEventListener('beforeinstallprompt', function(e) {
+      e.preventDefault();
+      deferredPrompt = e;
+      banner.style.display = 'flex';
+    });
+
+    installBtn.addEventListener('click', function() {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(function() {
+        deferredPrompt = null;
+        banner.style.display = 'none';
+      });
+    });
+
+    closeBtn.addEventListener('click', function() {
+      banner.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
