@@ -132,7 +132,7 @@
         // CTA - primeiros 2 cards usam "Acessar", demais "Ver oferta"
         var cta = document.createElement("div");
         cta.className = "card-cta";
-        cta.textContent = index < 2 ? "Acessar" : "Ver oferta";
+        cta.textContent = index < 3 ? "Acessar" : "Ver oferta";
 
         info.appendChild(nameEl);
         info.appendChild(priceEl);
