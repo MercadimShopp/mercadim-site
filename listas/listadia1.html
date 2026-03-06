@@ -24,21 +24,21 @@
     </div>
     <ul>
       <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-1'); toggleMenu();">
-        <span class="menu-icon">🔥</span> Lista do Dia 1</a></li>
+        <span class="menu-icon">📝</span> Lista do Dia 1</a></li>
       <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-2'); toggleMenu();">
-        <span class="menu-icon">📱</span> Lista do Dia 2</a></li>
+        <span class="menu-icon">📝</span> Lista do Dia 2</a></li>
       <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-3'); toggleMenu();">
-        <span class="menu-icon">🧊</span> Lista do Dia 3</a></li>
+        <span class="menu-icon">📝</span> Lista do Dia 3</a></li>
       <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-4'); toggleMenu();">
-        <span class="menu-icon">🏠</span> Lista do Dia 4 </a></li>
+        <span class="menu-icon">📝</span> Lista do Dia 4 </a></li>
       <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-5'); toggleMenu();">
-        <span class="menu-icon">👔</span> Lista do Dia 5</a></li>
+        <span class="menu-icon">📝</span> Lista do Dia 5</a></li>
       <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-6'); toggleMenu();">
-        <span class="menu-icon">👗</span> Lista do Dia 6</a></li>
+        <span class="menu-icon">📝</span> Lista do Dia 6</a></li>
       <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-7'); toggleMenu();">
-        <span class="menu-icon">💄</span> Lista do Dia 7</a></li>
+        <span class="menu-icon">📝</span> Lista do Dia 7</a></li>
       <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-8'); toggleMenu();">
-        <span class="menu-icon">🔧</span> Lista do Dia 8</a></li>
+        <span class="menu-icon">📝</span> Lista do Dia 8</a></li>
     </ul>
   </nav>
 
@@ -101,16 +101,15 @@
     document.getElementById('overlay').onclick = toggleMenu;
 
     var categoryNames = {
-      'achadinhos-do-dia': { emoji: '\uD83D\uDD25', name: 'Achadinhos do Dia' },
-      'eletronicos': { emoji: '\uD83D\uDCF1', name: 'Eletrônicos' },
-      'eletrodomesticos': { emoji: '\uD83E\uDDCA', name: 'Eletrodomésticos' },
-      'casa-cozinha': { emoji: '\uD83C\uDFE0', name: 'Casa' },
-      'moda-masculina': { emoji: '\uD83D\uDC54', name: 'Moda Masculina' },
-      'moda-feminina': { emoji: '\uD83D\uDC57', name: 'Moda Feminina' },
-      'beleza-cuidados': { emoji: '\uD83D\uDC84', name: 'Saúde e Beleza' },
-      'utilidades': { emoji: '\uD83D\uDD27', name: 'Utilidades' },
-      'pet-e-cia': { emoji: '\uD83D\uDC3E', name: 'Pet & Cia' },
-    };
+      'achadinhos-do-dia': { emoji: '\uD83D\uDCDD', name: 'Achadinhos do Dia' },
+      'eletronicos': { emoji: '\uD83D\uDCDD', name: 'Eletrônicos' },
+      'eletrodomesticos': { emoji: '\uD83D\uDCDD', name: 'Eletrodomésticos' },
+      'casa-cozinha': { emoji: '\uD83D\uDCDD', name: 'Casa' },
+      'moda-masculina': { emoji: '\uD83D\uDCDD', name: 'Moda Masculina' },
+      'moda-feminina': { emoji: '\uD83D\uDCDD', name: 'Moda Feminina' },
+      'beleza-cuidados': { emoji: '\uD83D\uDCDD', name: 'Saúde e Beleza' },
+      'utilidades': { emoji: '\uD83D\uDCDD', name: 'Utilidades' },
+      };
 
     function selectCategory(cat) {
       // Atualiza título da categoria
