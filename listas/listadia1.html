@@ -70,17 +70,7 @@
   </div>
 
   <section class="grid" id="product-grid">
-    <!-- Exemplo de card revisado -->
-    <div class="card">
-      <div class="card-image">
-        <img src="images/produto.jpg" alt="Produto exemplo">
-      </div>
-      <div class="card-info">
-        <div class="card-name">Nome do Produto</div>
-        <div class="card-price">R$ 99,90</div>
-        <a href="https://mercadimshopp.com.br/produto" class="card-cta">Ver oferta</a>
-      </div>
-    </div>
+    <!-- Produtos carregados automaticamente via CSV -->
   </section>
 
   <button class="scroll-top" id="scroll-top" aria-label="Voltar ao topo">
@@ -122,6 +112,7 @@
       };
 
     function selectCategory(cat) {
+      // Atualiza título da categoria
       var titleEl = document.getElementById('current-category');
       var info = categoryNames[cat];
       if (titleEl && info) {
@@ -129,6 +120,7 @@
       } else if (titleEl) {
         titleEl.textContent = cat;
       }
+      // Atualiza sidebar ativa
       var sidebarLinks = document.querySelectorAll('#menu ul li a');
       sidebarLinks.forEach(function(a) { a.classList.remove('active'); });
       sidebarLinks.forEach(function(a) {
@@ -157,4 +149,24 @@
       deferredPrompt.prompt();
       deferredPrompt.userChoice.then(function() {
         deferredPrompt = null;
+        banner.style.display = 'none';
+      });
+    });
 
+    // Scroll to top
+    var scrollBtn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 400) {
+        scrollBtn.classList.add('visible');
+      } else {
+        scrollBtn.classList.remove('visible');
+      }
+    });
+    scrollBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
+</body>
+</html>
