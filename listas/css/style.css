@@ -558,12 +558,21 @@ nav ul li a.active {
 }
 
 /* Responsividade para celular */
-@media (max-width: 768px) {
-    .btn-direcionamento {
-        width: 90%;
-        font-size: 12px;
-        padding: 0 8px;
+@media (max-width: 600px) {
+
+    .footer-button {
+        padding: 0 12px;
     }
+
+    .btn-direcionamento {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+        padding: 14px;
+        border-radius: 8px;
+    }
+
 }
 
 /* ===== RESPONSIVE ===== */
