@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mercadim Shopp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1a6dcc" />
+  <link rel="apple-touch-icon" href="images/logo.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Mercadim Shopp" />
+</head>
+<body>
+
+  <nav id="menu">
+    <div class="menu-header">
+      <h3>Categorias</h3>
+      <button class="menu-close" onclick="toggleMenu()" aria-label="Fechar menu">&times;</button>
+    </div>
+    <ul>
+      <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-1'); toggleMenu();">
+        <span class="menu-icon">📝</span> Lista do Dia 1</a></li>
+      <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-2'); toggleMenu();">
+        <span class="menu-icon">📝</span> Lista do Dia 2</a></li>
+      <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-3'); toggleMenu();">
+        <span class="menu-icon">📝</span> Lista do Dia 3</a></li>
+      <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-4'); toggleMenu();">
+        <span class="menu-icon">📝</span> Lista do Dia 4 </a></li>
+      <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-5'); toggleMenu();">
+        <span class="menu-icon">📝</span> Lista do Dia 5</a></li>
+      <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-6'); toggleMenu();">
+        <span class="menu-icon">📝</span> Lista do Dia 6</a></li>
+      <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-7'); toggleMenu();">
+        <span class="menu-icon">📝</span> Lista do Dia 7</a></li>
+      <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-8'); toggleMenu();">
+        <span class="menu-icon">📝</span> Lista do Dia 8</a></li>
+    </ul>
+  </nav>
+
+  <div class="overlay" id="overlay"></div>
+
+  <header>
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir menu" aria-expanded="false">
+      <span class="menu-btn__bar"></span>
+      <span class="menu-btn__bar"></span>
+      <span class="menu-btn__bar"></span>
+    </button>
+    <div class="logo">
+      <img src="images/logo.png" alt="Mercadim Shopp" class="site-logo" />
+      <span class="site-title">Mercadim Shopp</span>
+    </div>
+  </header>
+
+  <div id="install-banner" class="install-banner" style="display:none;">
+    <span>Adicione o Mercadim na sua tela inicial!</span>
+    <button id="install-btn">Adicionar</button>
+  </div>
+
+  <div class="content-wrapper">
+    <div class="tagline" id="current-category"><span class="tagline__emoji">📝</span> Lista do Dia 1</div>
+
+    <div class="price-disclaimer" role="note" aria-label="Aviso sobre preços">
+      Os preços apresentados nos cards têm caráter meramente informativo e podem divergir dos valores praticados pelo vendedor no momento da compra. Consulte a página do vendedor para confirmação de preço, disponibilidade, frete e impostos.
+    </div>
+  </div>
+
+  <section class="grid" id="product-grid">
+    <!-- Produtos carregados automaticamente via CSV -->
+  </section>
+
+  <button class="scroll-top" id="scroll-top" aria-label="Voltar ao topo">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 4L4 10.5H8V16H12V10.5H16L10 4Z" fill="currentColor"/>
+    </svg>
+  </button>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <span class="footer-brand">Mercadim Shopp</span>
+      <span class="footer-divider">&middot;</span>
+      <span class="footer-text">Achadinhos e ofertas selecionadas</span>
+    </div>
+    <div class="footer-button">
+      <a href="https://mercadimshopp.com.br" class="btn-direcionamento" target="_blank" rel="noopener noreferrer">
+      Ir para Mercadim Shopp
+      </a>
+   </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById('menu');
+      var overlay = document.getElementById('overlay');
+      var btn = document.querySelector('.menu-btn');
+      menu.classList.toggle('active');
+      overlay.classList.toggle('active');
+      var isOpen = menu.classList.contains('active');
+      if (btn) btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    document.getElementById('overlay').onclick = toggleMenu;
+
+    var categoryNames = {
+      'lista-dia-1': { emoji: '\uD83D\uDCDD', name: 'Lista do Dia 1' },
+      'lista-dia-2': { emoji: '\uD83D\uDCDD', name: 'Lista do Dia 2' },
+      'lista-dia-3': { emoji: '\uD83D\uDCDD', name: 'Lista do Dia 3' },
+      'lista-dia-4': { emoji: '\uD83D\uDCDD', name: 'Lista do Dia 4' },
+      'lista-dia-5': { emoji: '\uD83D\uDCDD', name: 'Lista do Dia 5' },
+      'lista-dia-6': { emoji: '\uD83D\uDCDD', name: 'Lista do Dia 6' },
+      'lista-dia-7': { emoji: '\uD83D\uDCDD', name: 'Lista do Dia 7' },
+      'lista-dia-8': { emoji: '\uD83D\uDCDD', name: 'Lista do Dia 8' },
+      };
+
+    function selectCategory(cat) {
+      // Atualiza título da categoria
+      var titleEl = document.getElementById('current-category');
+      var info = categoryNames[cat];
+      if (titleEl && info) {
+        titleEl.innerHTML = '<span class="tagline__emoji">' + info.emoji + '</span> ' + info.name;
+      } else if (titleEl) {
+        titleEl.textContent = cat;
+      }
+      // Atualiza sidebar ativa
+      var sidebarLinks = document.querySelectorAll('#menu ul li a');
+      sidebarLinks.forEach(function(a) { a.classList.remove('active'); });
+      sidebarLinks.forEach(function(a) {
+        if (a.getAttribute('onclick') && a.getAttribute('onclick').indexOf(cat) !== -1) {
+          a.classList.add('active');
+        }
+      });
+      carregarCategoria(cat);
+    }
+  </script>
+
+  <script src="js/load-products.js"></script>
+  <script>
+    var deferredPrompt;
+    var banner = document.getElementById('install-banner');
+    var installBtn = document.getElementById('install-btn');
+
+    window.addEventListener('beforeinstallprompt', function(e) {
+      e.preventDefault();
+      deferredPrompt = e;
+      banner.style.display = 'flex';
+    });
+
+    installBtn.addEventListener('click', function() {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(function() {
+        deferredPrompt = null;
+        banner.style.display = 'none';
+      });
+    });
+
+    // Scroll to top
+    var scrollBtn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 400) {
+        scrollBtn.classList.add('visible');
+      } else {
+        scrollBtn.classList.remove('visible');
+      }
+    });
+    scrollBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
