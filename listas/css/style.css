@@ -358,7 +358,6 @@ nav ul li a.active {
   width: 100%;
   padding-top: 100%;
   overflow: hidden;
-  background: var(--color-bg);
 }
 
 .card-image img {
