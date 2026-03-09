@@ -616,18 +616,3 @@ nav ul li a.active {
     grid-template-columns: repeat(5, 1fr);
   }
 }
-.btn-voltar {
-  display: inline-block;
-  background-color: #1a6dcc; /* azul */
-  color: #fff; /* texto branco */
-  padding: 12px 24px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
-  transition: background-color 0.3s ease;
-}
-
-.btn-voltar:hover {
-  background-color: #1555a0; /* azul mais escuro no hover */
-}
