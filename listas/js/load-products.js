@@ -2,14 +2,21 @@
 (function () {
   var GRID_ID = "product-grid";
   var DATA_DIR = "data";
-  var DEFAULT_CATEGORY = "lista-dia-1";
   var PLACEHOLDER = "images/placeholder.png";
 
   window.carregarCategoria = carregarCategoria;
 
-  document.addEventListener("DOMContentLoaded", function () {
-    carregarCategoria(DEFAULT_CATEGORY);
-  });
+ document.addEventListener("DOMContentLoaded", function () {
+
+  var pagina = window.location.pathname.split("/").pop();
+
+  var match = pagina.match(/listadia(\d+)/);
+
+  var categoria = match ? "lista-dia-" + match[1] : "lista-dia-1";
+
+  carregarCategoria(categoria);
+
+});
 
   function showSkeletons(grid, count) {
     grid.innerHTML = '';
