@@ -560,18 +560,23 @@ nav ul li a.active {
 /* Responsividade para celular */
 @media (max-width: 600px) {
 
-    .footer-button {
-        padding: 0 12px;
-    }
+  .btn-direcionamento {
 
-    .btn-direcionamento {
-        display: block;
-        width: 100%;
-        text-align: center;
-        font-size: 16px;
-        padding: 14px;
-        border-radius: 8px;
-    }
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: var(--space-sm) var(--space-md);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    border-radius: var(--radius-sm);
+
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+  }
 
 }
 
