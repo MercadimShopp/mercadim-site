@@ -1,0 +1,235 @@
+/* header-busca-teste.css — apenas para header-busca-teste.html (não altera style.css) */
+
+header.header-busca-teste {
+  height: auto;
+  min-height: var(--header-height);
+  padding-top: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  align-items: center;
+}
+
+.header-busca-teste__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md) var(--space-lg);
+  flex: 1;
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .header-busca-teste__inner {
+    flex-wrap: nowrap;
+  }
+}
+
+.header-busca-teste__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+/* Título da marca: mais destacado que o título da categoria (.tagline 1.375rem) */
+.header-busca-teste .logo {
+  gap: clamp(10px, 0.35rem + 1.2vw, 14px);
+  align-items: center;
+  min-width: 0;
+}
+
+.header-busca-teste .site-logo {
+  width: clamp(32px, 29px + 1vw, 38px);
+  height: clamp(32px, 29px + 1vw, 38px);
+  flex-shrink: 0;
+}
+
+.header-busca-teste .site-title {
+  font-size: clamp(1.5rem, 1.28rem + 1.1vw, 1.875rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.028em;
+  color: var(--color-text-primary);
+  min-width: 0;
+}
+
+/* Categoria abaixo do header: um degrau visual abaixo da marca */
+body:has(.header-busca-teste) .content-wrapper .tagline {
+  font-size: 1.1875rem;
+  font-weight: 600;
+  letter-spacing: -0.018em;
+}
+
+/* Bloco de busca */
+.header-busca-teste__search {
+  flex: 1 1 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .header-busca-teste__search {
+    flex: 1 1 280px;
+    max-width: min(560px, 52vw);
+    margin-left: auto;
+  }
+}
+
+.header-search-form {
+  width: 100%;
+}
+
+.header-search-field {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  min-height: 42px;
+  padding: 2px 2px 2px 12px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.header-search-field:focus-within {
+  border-color: var(--color-primary);
+  background: var(--color-surface);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.header-search-field__icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-tertiary);
+  pointer-events: none;
+}
+
+.header-search-field:focus-within .header-search-field__icon {
+  color: var(--color-primary);
+}
+
+#busca-input.header-search-field__input {
+  flex: 1;
+  min-width: 0;
+  height: 38px;
+  padding: 0 var(--space-sm);
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+#busca-input.header-search-field__input::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+#busca-input.header-search-field__input:focus {
+  outline: none;
+}
+
+.header-search-field__btn {
+  flex-shrink: 0;
+  height: 36px;
+  padding: 0 var(--space-lg);
+  margin: 0 2px 0 0;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform 0.1s ease;
+}
+
+.header-search-field__btn:hover {
+  background: var(--color-primary-dark);
+}
+
+.header-search-field__btn:active {
+  transform: scale(0.98);
+}
+
+.header-search-field__btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+@media (max-width: 380px) {
+  .header-search-field__btn {
+    padding: 0 var(--space-md);
+    font-size: 0.75rem;
+  }
+}
+
+/* Esconder botão em telas muito estreitas (busca só por digitação) */
+@media (max-width: 340px) {
+  .header-search-field__btn {
+    display: none;
+  }
+
+  .header-search-field {
+    padding-right: 12px;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Mensagens na grelha (busca.js) */
+.search-empty-msg,
+.search-error {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.search-error {
+  color: #c5221f;
+}
+
+.card-category {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.teste-badge {
+  display: inline-block;
+  margin-left: var(--space-sm);
+  padding: 2px 8px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-inverse);
+  background: var(--color-accent);
+  border-radius: var(--radius-sm);
+  vertical-align: middle;
+}

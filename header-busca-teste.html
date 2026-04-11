@@ -3,18 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mercadim Shopp</title>
+  <title>Mercadim Shopp — Busca no cabeçalho (teste)</title>
+  <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="../css/header-busca.css" />
-  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="css/header-busca-teste.css" />
   <meta name="theme-color" content="#1a6dcc" />
   <link rel="apple-touch-icon" href="images/logo.png" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="apple-mobile-web-app-title" content="Mercadim Shopp" />
 </head>
 <body>
 
@@ -24,41 +21,43 @@
       <button class="menu-close" onclick="toggleMenu()" aria-label="Fechar menu">&times;</button>
     </div>
     <ul>
-      <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-1'); toggleMenu();">
-        <span class="menu-icon">📝</span> Lista do Dia 1</a></li>
-      <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-2'); toggleMenu();">
-        <span class="menu-icon">📝</span> Lista do Dia 2</a></li>
-      <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-3'); toggleMenu();">
-        <span class="menu-icon">📝</span> Lista do Dia 3</a></li>
-      <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-4'); toggleMenu();">
-        <span class="menu-icon">📝</span> Lista do Dia 4 </a></li>
-      <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-5'); toggleMenu();">
-        <span class="menu-icon">📝</span> Lista do Dia 5</a></li>
-      <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-6'); toggleMenu();">
-        <span class="menu-icon">📝</span> Lista do Dia 6</a></li>
-      <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-7'); toggleMenu();">
-        <span class="menu-icon">📝</span> Lista do Dia 7</a></li>
-      <li><a href="javascript:void(0)" onclick="selectCategory('lista-dia-8'); toggleMenu();">
-        <span class="menu-icon">📝</span> Lista do Dia 8</a></li>
+      <li><a href="javascript:void(0)" onclick="selectCategory('achadinhos-do-dia'); toggleMenu();">
+        <span class="menu-icon">🔥</span> Achadinhos do Dia</a></li>
+      <li><a href="javascript:void(0)" onclick="selectCategory('eletronicos'); toggleMenu();">
+        <span class="menu-icon">📱</span> Eletrônicos</a></li>
+      <li><a href="javascript:void(0)" onclick="selectCategory('eletrodomesticos'); toggleMenu();">
+        <span class="menu-icon">🧊</span> Eletrodomésticos</a></li>
+      <li><a href="javascript:void(0)" onclick="selectCategory('casa-cozinha'); toggleMenu();">
+        <span class="menu-icon">🏠</span> Casa </a></li>
+      <li><a href="javascript:void(0)" onclick="selectCategory('moda-masculina'); toggleMenu();">
+        <span class="menu-icon">👔</span> Moda Masculina</a></li>
+      <li><a href="javascript:void(0)" onclick="selectCategory('moda-feminina'); toggleMenu();">
+        <span class="menu-icon">👗</span> Moda Feminina</a></li>
+      <li><a href="javascript:void(0)" onclick="selectCategory('beleza-cuidados'); toggleMenu();">
+        <span class="menu-icon">💄</span> Saúde e Beleza</a></li>
+      <li><a href="javascript:void(0)" onclick="selectCategory('utilidades'); toggleMenu();">
+        <span class="menu-icon">🔧</span> Utilidades</a></li>
+      <li><a href="javascript:void(0)" onclick="selectCategory('pet-e-cia'); toggleMenu();">
+        <span class="menu-icon">🐾</span> Pet & Cia</a></li>
     </ul>
   </nav>
 
   <div class="overlay" id="overlay"></div>
 
-  <header class="header-busca">
+  <header class="header-busca-teste">
     <button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir menu" aria-expanded="false">
       <span class="menu-btn__bar"></span>
       <span class="menu-btn__bar"></span>
       <span class="menu-btn__bar"></span>
     </button>
-    <div class="header-busca__inner">
-      <div class="header-busca__brand">
+    <div class="header-busca-teste__inner">
+      <div class="header-busca-teste__brand">
         <div class="logo">
           <img src="images/logo.png" alt="Mercadim Shopp" class="site-logo" />
           <span class="site-title">Mercadim Shopp</span>
         </div>
       </div>
-      <div class="header-busca__search">
+      <div class="header-busca-teste__search">
         <form class="header-search-form" role="search" action="#" aria-label="Busca no site">
           <label class="visually-hidden" for="busca-input">Buscar produtos em todas as categorias</label>
           <div class="header-search-field">
@@ -81,13 +80,19 @@
     </div>
   </header>
 
-  <div id="install-banner" class="install-banner" style="display:none;">
-    <span>Adicione o Mercadim na sua tela inicial!</span>
-    <button id="install-btn">Adicionar</button>
+  <div class="content-wrapper">
+    <div class="tagline" id="current-category">
+      <span class="tagline__emoji">🔥</span> Achadinhos do Dia
+      <span class="teste-badge">Teste</span>
+    </div>
+
+    <div class="price-disclaimer" role="note" aria-label="Aviso sobre preços">
+      Os preços apresentados nos cards têm caráter meramente informativo e podem divergir dos valores praticados pelo vendedor no momento da compra. Consulte a página do vendedor para confirmação de preço, disponibilidade, frete e impostos.
+    </div>
   </div>
 
-  <section class="grid" id="product-grid">
-    <!-- Produtos carregados automaticamente via CSV -->
+  <section class="grid" id="product-grid" aria-label="Produtos da categoria ou resultados da busca">
+    <!-- load-products.js + header-busca-categoria.js -->
   </section>
 
   <button class="scroll-top" id="scroll-top" aria-label="Voltar ao topo">
@@ -100,15 +105,12 @@
     <div class="footer-content">
       <span class="footer-brand">Mercadim Shopp</span>
       <span class="footer-divider">&middot;</span>
-      <span class="footer-text">Achadinhos e ofertas selecionadas</span>
+      <span class="footer-text">Teste — busca no cabeçalho + categorias</span>
     </div>
-    <div class="footer-button">
-      <a href="https://mercadimshopp.com.br" class="btn-direcionamento" target="_blank" rel="noopener noreferrer">
-      Ir para Mercadim Shopp
-      </a>
-   </div>
   </footer>
 
+  <script src="js/load-products.js"></script>
+  <script src="js/header-busca-categoria.js"></script>
   <script>
     function toggleMenu() {
       var menu = document.getElementById('menu');
@@ -122,43 +124,42 @@
 
     document.getElementById('overlay').onclick = toggleMenu;
 
+    var categoryNames = {
+      'achadinhos-do-dia': { emoji: '\uD83D\uDD25', name: 'Achadinhos do Dia' },
+      'eletronicos': { emoji: '\uD83D\uDCF1', name: 'Eletrônicos' },
+      'eletrodomesticos': { emoji: '\uD83E\uDDCA', name: 'Eletrodomésticos' },
+      'casa-cozinha': { emoji: '\uD83C\uDFE0', name: 'Casa' },
+      'moda-masculina': { emoji: '\uD83D\uDC54', name: 'Moda Masculina' },
+      'moda-feminina': { emoji: '\uD83D\uDC57', name: 'Moda Feminina' },
+      'beleza-cuidados': { emoji: '\uD83D\uDC84', name: 'Saúde e Beleza' },
+      'utilidades': { emoji: '\uD83D\uDD27', name: 'Utilidades' },
+      'pet-e-cia': { emoji: '\uD83D\uDC3E', name: 'Pet & Cia' },
+    };
+
     function selectCategory(cat) {
       var input = document.getElementById('busca-input');
       if (input) input.value = '';
+
+      var titleEl = document.getElementById('current-category');
+      var info = categoryNames[cat];
+      if (titleEl && info) {
+        titleEl.innerHTML = '<span class="tagline__emoji">' + info.emoji + '</span> ' + info.name +
+          ' <span class="teste-badge">Teste</span>';
+      } else if (titleEl) {
+        titleEl.textContent = cat;
+      }
+
       var sidebarLinks = document.querySelectorAll('#menu ul li a');
       sidebarLinks.forEach(function(a) { a.classList.remove('active'); });
       sidebarLinks.forEach(function(a) {
-        if (a.getAttribute('onclick') && a.getAttribute('onclick').indexOf(cat) !== -1) {
+        if (a.getAttribute('onclick') && a.getAttribute('onclick').indexOf("'" + cat + "'") !== -1) {
           a.classList.add('active');
         }
       });
+
       carregarCategoria(cat);
     }
-  </script>
 
-  <script src="js/load-products.js"></script>
-  <script src="../js/header-busca-categoria.js"></script>
-  <script>
-    var deferredPrompt;
-    var banner = document.getElementById('install-banner');
-    var installBtn = document.getElementById('install-btn');
-
-    window.addEventListener('beforeinstallprompt', function(e) {
-      e.preventDefault();
-      deferredPrompt = e;
-      banner.style.display = 'flex';
-    });
-
-    installBtn.addEventListener('click', function() {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(function() {
-        deferredPrompt = null;
-        banner.style.display = 'none';
-      });
-    });
-
-    // Scroll to top
     var scrollBtn = document.getElementById('scroll-top');
     window.addEventListener('scroll', function() {
       if (window.scrollY > 400) {
@@ -179,16 +180,12 @@
         input.dispatchEvent(new Event('input', { bubbles: true }));
       }
       submitBtn.addEventListener('click', refireInput);
-      var form = submitBtn.closest('form');
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          refireInput();
-          input.focus();
-        });
-      }
+      submitBtn.closest('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        refireInput();
+        input.focus();
+      });
     });
   </script>
 </body>
 </html>
-
