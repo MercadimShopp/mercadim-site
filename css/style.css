@@ -569,3 +569,11 @@ nav ul li a.active {
     grid-template-columns: repeat(5, 1fr);
   }
 }
+.disclaimer {
+  font-size: 12px;
+  color: #777;
+  text-align: center;
+  padding: 10px 15px;
+  background: #f9f9f9;
+  border-bottom: 1px solid #eee;
+}
