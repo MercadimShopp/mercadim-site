@@ -31,6 +31,22 @@
   async function carregarCategoria(categoria) {
     var grid = document.getElementById(GRID_ID);
     if (!grid) return;
+     var titleEl = document.getElementById('category-title');
+  if (titleEl) {
+    var nomes = {
+      "achadinhos-do-dia": "🔥 Achadinhos do Dia",
+      "eletronicos": "📱 Eletrônicos",
+      "eletrodomesticos": "🧊 Eletrodomésticos",
+      "casa-cozinha": "🏠 Casa",
+      "moda-masculina": "👔 Moda Masculina",
+      "moda-feminina": "👗 Moda Feminina",
+      "beleza-cuidados": "💄 Saúde e Beleza",
+      "utilidades": "🔧 Utilidades",
+      "pet-e-cia": "🐾 Pet & Cia"
+    };
+
+    titleEl.textContent = nomes[categoria] || categoria;
+  }
     showSkeletons(grid, 8);
 
     var csvPath = DATA_DIR + "/" + categoria + ".csv";
