@@ -230,6 +230,16 @@
       localStorage.setItem('sorteioUltimoModal', new Date().toDateString());
     }
 
+        function podeExibirModal() {
+      var hoje = new Date().toDateString();
+      var ultimo = localStorage.getItem('sorteioUltimoModal');
+      return ultimo !== hoje;
+    }
+
+    function marcarModalExibido() {
+      localStorage.setItem('sorteioUltimoModal', new Date().toDateString());
+    }
+
     document.addEventListener('click', function(e) {
       var link = e.target.closest('a');
       if (link && link.href && (
@@ -261,9 +271,6 @@
       if (e.target === this) fecharModalSorteio();
     });
     
-    document.getElementById('sorteio-modal').addEventListener('click', function(e) {
-      if (e.target === this) fecharModalSorteio();
-    });
   </script>
 </body>
 </html>
