@@ -218,14 +218,15 @@
       }
     }
 
-    document.addEventListener('click', function(e) {
+        document.addEventListener('click', function(e) {
       var link = e.target.closest('a');
       if (link && link.href && (
         link.href.indexOf('shopee.com.br') !== -1 ||
         link.href.indexOf('s.shopee.com.br') !== -1 ||
-        link.href.indexOf('amazon.com.br') !== -1 ||
-        link.href.indexOf('mercadolivre.com.br') !== -1 ||
-        link.href.indexOf('mercadolibre.com') !== -1
+        link.href.indexOf('amzn.to') !== -1 ||
+        link.href.indexOf('link.amazon') !== -1 ||
+        link.href.indexOf('mercadolivre.com') !== -1 ||
+        link.href.indexOf('meli.la') !== -1
       )) {
         e.preventDefault();
         document.getElementById('sorteio-modal').style.display = 'flex';
