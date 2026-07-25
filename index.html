@@ -102,6 +102,18 @@
 <section class="grid" id="product-grid">
 </section>
 
+<!-- MODAL DO SORTEIO -->
+<div id="sorteio-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
+  <div style="background:#fff; max-width:420px; width:90%; padding:24px; border-radius:16px; position:relative; box-shadow:0 8px 32px rgba(0,0,0,0.2);">
+    <button onclick="fecharModalSorteio()" style="position:absolute; top:10px; right:16px; background:none; border:none; font-size:28px; cursor:pointer; color:#666; line-height:1;">&times;</button>
+    <h3 style="font-size:20px; margin:0 0 4px; color:#333;">🎁 Participe do Sorteio!</h3>
+    <p style="font-size:14px; color:#666; margin:0 0 16px;">Deixe seu email e concorra a prêmios toda semana!</p>
+    <div style="width:100%; overflow:hidden; border-radius:8px;">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSenznjJ6oHR2tSUITChEULiI49219FneSzOpSC3fpGRzIaGJQ/viewform?embedded=true" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+    </div>
+  </div>
+</div>  
+
 <button class="scroll-top" id="scroll-top" aria-label="Voltar ao topo">
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
     <path d="M10 4L4 10.5H8V16H12V10.5H16L10 4Z" fill="currentColor"/>
@@ -194,6 +206,43 @@
           input.focus();
         });
       }
+    });
+        /* ==========================================================
+       NOVO: SISTEMA DE SORTEIO - ABRE MODAL AO CLICAR EM LINK
+       ========================================================== */
+
+    function fecharModalSorteio() {
+      document.getElementById('sorteio-modal').style.display = 'none';
+      if (window.linkDestino) {
+        window.location.href = window.linkDestino;
+      }
+    }
+
+    document.addEventListener('click', function(e) {
+      var link = e.target.closest('a');
+      if (link && link.href && (
+        link.href.indexOf('shopee.com.br') !== -1 ||
+        link.href.indexOf('s.shopee.com.br') !== -1 ||
+        link.href.indexOf('amazon.com.br') !== -1 ||
+        link.href.indexOf('mercadolivre.com.br') !== -1 ||
+        link.href.indexOf('mercadolibre.com') !== -1
+      )) {
+        e.preventDefault();
+        document.getElementById('sorteio-modal').style.display = 'flex';
+        window.linkDestino = link.href;
+
+        if (window.timeoutRedirecionar) clearTimeout(window.timeoutRedirecionar);
+        window.timeoutRedirecionar = setTimeout(function() {
+          if (window.linkDestino) {
+            document.getElementById('sorteio-modal').style.display = 'none';
+            window.location.href = window.linkDestino;
+          }
+        }, 120000);
+      }
+    });
+
+    document.getElementById('sorteio-modal').addEventListener('click', function(e) {
+      if (e.target === this) fecharModalSorteio();
     });
   </script>
 </body>
