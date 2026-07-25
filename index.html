@@ -218,7 +218,9 @@
       }
     }
 
-        document.addEventListener('click', function(e) {
+           var modalJaExibido = false;
+
+    document.addEventListener('click', function(e) {
       var link = e.target.closest('a');
       if (link && link.href && (
         link.href.indexOf('shopee.com.br') !== -1 ||
@@ -228,7 +230,10 @@
         link.href.indexOf('mercadolivre.com') !== -1 ||
         link.href.indexOf('meli.la') !== -1
       )) {
+        if (modalJaExibido) return;
+
         e.preventDefault();
+        modalJaExibido = true;
         document.getElementById('sorteio-modal').style.display = 'flex';
         window.linkDestino = link.href;
 
