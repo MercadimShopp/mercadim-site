@@ -220,6 +220,16 @@
 
            var modalJaExibido = false;
 
+        function podeExibirModal() {
+      var hoje = new Date().toDateString();
+      var ultimo = localStorage.getItem('sorteioUltimoModal');
+      return ultimo !== hoje;
+    }
+
+    function marcarModalExibido() {
+      localStorage.setItem('sorteioUltimoModal', new Date().toDateString());
+    }
+
     document.addEventListener('click', function(e) {
       var link = e.target.closest('a');
       if (link && link.href && (
@@ -230,10 +240,10 @@
         link.href.indexOf('mercadolivre.com') !== -1 ||
         link.href.indexOf('meli.la') !== -1
       )) {
-        if (modalJaExibido) return;
+        if (!podeExibirModal()) return;
 
         e.preventDefault();
-        modalJaExibido = true;
+        marcarModalExibido();
         document.getElementById('sorteio-modal').style.display = 'flex';
         window.linkDestino = link.href;
 
@@ -247,6 +257,10 @@
       }
     });
 
+    document.getElementById('sorteio-modal').addEventListener('click', function(e) {
+      if (e.target === this) fecharModalSorteio();
+    });
+    
     document.getElementById('sorteio-modal').addEventListener('click', function(e) {
       if (e.target === this) fecharModalSorteio();
     });
