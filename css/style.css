@@ -361,14 +361,12 @@ nav ul li a.active {
   background: var(--color-bg);
 }
 
-.card-image img {
-  position: absolute;
-  top: 0;
-  left: 0;
+.card-image {
+  position: relative;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform var(--transition-slow);
+  padding-top: 66.67%;    /* proporção 3:2 (mais baixa) */
+  overflow: hidden;
+  background: var(--color-bg);
 }
 
 .card:hover .card-image img {
