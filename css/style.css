@@ -407,10 +407,10 @@ nav ul li a.active {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-xs) var(--space-sm);  /* 8px/12px → 4px/8px */
   background: var(--color-accent);
   color: var(--color-text-inverse);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;                       /* 12px → 11px */
   font-weight: 600;
   border-radius: var(--radius-sm);
   text-transform: uppercase;
