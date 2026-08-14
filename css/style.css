@@ -356,11 +356,10 @@ nav ul li a.active {
 .card-image {
   position: relative;
   width: 100%;
-  padding-top: 100%;
+  padding-top: 100%;      /* imagem quadrada */
   overflow: hidden;
   background: var(--color-bg);
 }
-
 .card:hover .card-image img {
   transform: scale(1.04);
 }
