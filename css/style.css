@@ -312,7 +312,7 @@ nav ul li a.active {
 
 /* ===== PRICE DISCLAIMER ===== */
 .disclaimer p {
-  font-size: 0.7rem;
+  font-size: 0.6875rem;
   color: #c0392b;
   line-height: 1.5;
   padding: var(--space-sm) var(--space-md);
@@ -356,10 +356,21 @@ nav ul li a.active {
 .card-image {
   position: relative;
   width: 100%;
-  padding-top: 100%;      /* imagem quadrada */
+  padding-top: 100%;
   overflow: hidden;
   background: var(--color-bg);
 }
+
+.card-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
 .card:hover .card-image img {
   transform: scale(1.04);
 }
@@ -396,10 +407,10 @@ nav ul li a.active {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-xs) var(--space-sm);  /* 8px/12px → 4px/8px */
+  padding: var(--space-sm) var(--space-md);
   background: var(--color-accent);
   color: var(--color-text-inverse);
-  font-size: 0.6875rem;                       /* 12px → 11px */
+  font-size: 0.75rem;
   font-weight: 600;
   border-radius: var(--radius-sm);
   text-transform: uppercase;
@@ -432,6 +443,7 @@ nav ul li a.active {
   background-size: 200% 100%;
   animation: skeleton-pulse 1.5s ease-in-out infinite;
 }
+
 .skeleton-info {
   padding: var(--space-md);
   display: flex;
