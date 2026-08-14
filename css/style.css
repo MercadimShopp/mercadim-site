@@ -310,18 +310,18 @@ nav ul li a.active {
   vertical-align: middle;
 }
 
-/* ===== PRICE DISCLAIMER ===== */
-/* Celular (padrão) — mantém como está */
+/* Celular (padrão) — vermelho, tamanho atual */
 .disclaimer {
+  color: var(--color-accent); /* ou #e63946 / o vermelho que você usa */
   font-size: 0.6875rem;
-  color: var(--color-text-muted);
   text-align: center;
 }
 
-/* Desktop (telas largas) — aumenta o texto */
+/* Desktop (telas largas) — vermelho, um pouco maior */
 @media (min-width: 768px) {
   .disclaimer {
-    font-size: 0.875rem;  /* 11px → 14px, mais legível no computador */
+    color: var(--color-accent);
+    font-size: 0.8125rem; /* 11px → 13px, um leve aumento */
   }
 }
 /* ===== PRODUCT GRID ===== */
