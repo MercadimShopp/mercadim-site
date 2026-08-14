@@ -312,7 +312,7 @@ nav ul li a.active {
 
 /* ===== PRICE DISCLAIMER ===== */
 .disclaimer p {
-  font-size: 0.6875rem;
+  font-size: 0.7rem;
   color: #c0392b;
   line-height: 1.5;
   padding: var(--space-sm) var(--space-md);
