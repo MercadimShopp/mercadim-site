@@ -311,17 +311,19 @@ nav ul li a.active {
 }
 
 /* ===== PRICE DISCLAIMER ===== */
-.disclaimer p {
+/* Celular (padrão) — mantém como está */
+.disclaimer {
   font-size: 0.6875rem;
-  color: #c0392b;
-  line-height: 1.5;
-  padding: var(--space-sm) var(--space-md);
-  background: var(--color-surface);
-  border-radius: var(--radius-sm);
-  border-left: 3px solid var(--color-border);
-  margin-bottom: var(--space-sm);
+  color: var(--color-text-muted);
+  text-align: center;
 }
 
+/* Desktop (telas largas) — aumenta o texto */
+@media (min-width: 768px) {
+  .disclaimer {
+    font-size: 0.875rem;  /* 11px → 14px, mais legível no computador */
+  }
+}
 /* ===== PRODUCT GRID ===== */
 .grid {
   display: grid;
