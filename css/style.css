@@ -387,11 +387,11 @@ nav ul li a.active {
   line-height: 1.3;
   color: var(--color-text-primary);
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  min-height: calc(0.8125rem * 1.3 * 3);
+  min-height: calc(0.8125rem * 1.3 * 2);
 }
 
 .card-price {
