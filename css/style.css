@@ -582,11 +582,12 @@ nav ul li a.active {
 
 .category-container {
   max-width: 1200px;
-  margin: 20px auto 10px;
-  padding: 0 15px;
+  margin: var(--space-xl) auto var(--space-md);
+  padding: 0 var(--space-lg);
 }
 
 #category-title {
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 700;
+  color: var(--color-text-primary);
 }
