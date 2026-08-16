@@ -542,6 +542,16 @@ nav ul li a.active {
   color: var(--color-text-tertiary);
 }
 
+/* ===== ACCESSIBILITY ===== */
+.card:focus-visible,
+.menu-btn:focus-visible,
+.menu-close:focus-visible,
+.scroll-top:focus-visible,
+.install-banner button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 420px) {
   .site-logo { width: 28px; height: 28px; }
@@ -590,12 +600,4 @@ nav ul li a.active {
   font-size: 1.375rem;
   font-weight: 700;
   color: var(--color-text-primary);
-}
-.card:focus-visible,
-.menu-btn:focus-visible,
-.menu-close:focus-visible,
-.scroll-top:focus-visible,
-.install-banner button:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
 }
