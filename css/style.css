@@ -375,6 +375,8 @@ nav ul li a.active {
   height: 100%;
   object-fit: contain;
   transition: transform var(--transition-slow);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .card:hover .card-image img {
