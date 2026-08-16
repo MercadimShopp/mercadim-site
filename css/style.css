@@ -346,6 +346,7 @@ nav ul li a.active {
   flex-direction: column;
   background: var(--color-surface);
   border-radius: var(--radius-card);
+   border: 1px solid rgba(255, 106, 43, 0.25);
   text-decoration: none;
   color: var(--color-text-primary);
   box-shadow: var(--shadow-card);
