@@ -346,15 +346,14 @@ nav ul li a.active {
   display: flex;
   flex-direction: column;
   background: var(--color-surface);
-  border-radius: var(--radius-card);
-   border: 1px solid rgba(255, 106, 43, 0.25);
+  border-radius: 0;
+  border: 1px solid rgba(255, 106, 43, 0.25);
   text-decoration: none;
   color: var(--color-text-primary);
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.10);
   overflow: hidden;
   transition: box-shadow var(--transition-normal), transform var(--transition-normal);
 }
-
 .card:hover {
   box-shadow: var(--shadow-card-hover);
   transform: translateY(-2px);
