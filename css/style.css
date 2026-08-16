@@ -312,8 +312,8 @@ nav ul li a.active {
 
 /* Seu bloco original — NÃO MEXER */
 .disclaimer p {
-  font-size: 0.6875rem;
-  color: #c0392b;
+  font-size: 0.75rem;
+  color: var(--color-warning);
   line-height: 1.5;
   padding: var(--space-sm) var(--space-md);
   background: var(--color-surface);
@@ -575,14 +575,7 @@ nav ul li a.active {
     grid-template-columns: repeat(5, 1fr);
   }
 }
-.disclaimer {
-  font-size: 12px;
-  color: #777;
-  text-align: center;
-  padding: 10px 15px;
-  background: #f9f9f9;
-  border-bottom: 1px solid #eee;
-}
+
 .category-container {
   max-width: 1200px;
   margin: 20px auto 10px;
