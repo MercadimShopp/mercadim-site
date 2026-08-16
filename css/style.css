@@ -552,6 +552,13 @@ nav ul li a.active {
   outline-offset: 2px;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 420px) {
   .site-logo { width: 28px; height: 28px; }
