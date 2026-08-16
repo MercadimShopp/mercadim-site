@@ -591,3 +591,11 @@ nav ul li a.active {
   font-weight: 700;
   color: var(--color-text-primary);
 }
+.card:focus-visible,
+.menu-btn:focus-visible,
+.menu-close:focus-visible,
+.scroll-top:focus-visible,
+.install-banner button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
