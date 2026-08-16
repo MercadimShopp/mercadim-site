@@ -12,6 +12,9 @@
   /* Success */
   --color-success: #00b37a;
 
+   /* Warning */ 
+  --color-warning: #c0392b; 
+
   /* Neutrals */
   --color-bg: #f5f6f8;
   --color-surface: #ffffff;
@@ -315,6 +318,7 @@ nav ul li a.active {
   font-size: 0.75rem;
   color: var(--color-warning);
   line-height: 1.5;
+  text-align: center;
   padding: var(--space-sm) var(--space-md);
   background: var(--color-surface);
   border-radius: var(--radius-sm);
