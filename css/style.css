@@ -426,12 +426,13 @@ nav ul li a.active {
   border-radius: var(--radius-sm);
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  transition: background var(--transition-fast);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  transition: background var(--transition-fast), box-shadow var(--transition-fast);
   margin-top: auto;
 }
-
 .card:hover .card-cta {
   background: var(--color-accent-dark);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.20);
 }
 
 /* ===== SKELETON LOADING ===== */
