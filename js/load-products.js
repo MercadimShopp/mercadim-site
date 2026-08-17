@@ -1,7 +1,7 @@
 // js/load-products.js
 (function () {
   var GRID_ID = "product-grid";
-  var DATA_DIR = "data";
+  var DATA_DIR = "/data";
   var DEFAULT_CATEGORY = "achadinhos-do-dia";
   var PLACEHOLDER = "images/placeholder.png";
 
