@@ -80,7 +80,7 @@ header {
   position: sticky;
   top: 0;
   height: var(--header-height);
-  background: var(--color-surface);
+  background: linear-gradient(to right, #ffe0b2, #bbdefb);
   padding: 0 var(--space-lg);
   display: flex;
   align-items: center;
