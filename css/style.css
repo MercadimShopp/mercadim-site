@@ -616,3 +616,12 @@ nav ul li a:focus-visible,
 .category-container {
   display: none;
 }
+@media (max-width: 599px) {
+  .card-image {
+    padding-top: 75%;
+  }
+  .card-info {
+    padding: var(--space-sm);
+    gap: var(--space-xs);
+  }
+}
