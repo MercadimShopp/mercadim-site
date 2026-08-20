@@ -625,3 +625,12 @@ nav ul li a.active {
     grid-template-columns: repeat(5, 1fr);
   }
 }
+@media (max-width: 599px) {
+  .card-image {
+    padding-top: 75%;
+  }
+  .card-info {
+    padding: var(--space-sm);
+    gap: var(--space-xs);
+  }
+}
