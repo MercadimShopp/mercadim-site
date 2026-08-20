@@ -613,3 +613,6 @@ nav ul li a:focus-visible,
   font-weight: 700;
   color: var(--color-text-primary);
 }
+.category-container {
+  display: none;
+}
