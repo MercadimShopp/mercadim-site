@@ -325,7 +325,7 @@ nav ul li a.active {
   margin-bottom: var(--space-sm);
 }
 
-/* Aumenta a fonte apenas em telas grandes, mantém o menor em telas pequenas */
+/* NOVO — só aumenta a fonte em telas grandes, mantém tudo o resto */
 @media (min-width: 768px) {
   .disclaimer p {
     font-size: 0.875rem; /* aumenta a fonte */
