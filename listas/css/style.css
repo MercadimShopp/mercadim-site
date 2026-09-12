@@ -314,7 +314,8 @@ nav ul li a.active {
 /* ===== PRICE DISCLAIMER ===== */
 .disclaimer p {
   font-size: 0.75rem;
-  color: #c0392b;
+  color: var(--color-warning);
+  font-weight: bold; /* agora em negrito */
   line-height: 1.5;
   text-align: center;
   padding: var(--space-sm) var(--space-md);
@@ -327,7 +328,8 @@ nav ul li a.active {
 /* Aumenta a fonte apenas em telas grandes, mantém o menor em telas pequenas */
 @media (min-width: 768px) {
   .disclaimer p {
-    font-size: 0.875rem;
+    font-size: 0.875rem; /* aumenta a fonte */
+    font-weight: bold;   /* mantém o negrito */
   }
 }
 
