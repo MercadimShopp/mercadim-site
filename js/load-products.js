@@ -21,7 +21,6 @@
         '<div class="skeleton-info">' +
           '<div class="skeleton-line"></div>' +
           '<div class="skeleton-line skeleton-line--short"></div>' +
-          '<div class="skeleton-line skeleton-line--price"></div>' +
           '<div class="skeleton-line skeleton-line--cta"></div>' +
         '</div>';
       grid.appendChild(skel);
@@ -107,7 +106,7 @@
         card.href = offerLink;
         card.target = "_blank";
         card.rel = "noopener noreferrer";
-        card.setAttribute("aria-label", itemName + (priceDisplay ? " - R$ " + priceDisplay : ""));
+        card.setAttribute("aria-label", itemName);
 
         // Imagem
         var imgWrap = document.createElement("div");
@@ -145,13 +144,12 @@
         priceEl.className = "card-price";
         priceEl.textContent = priceDisplay ? "R$ " + priceDisplay : "";
 
-        // CTA - primeiros 2 cards usam "Acessar", demais "Ver oferta"
+        // CTA - primeiros 4 cards usam "Acessar", demais "Ver oferta"
         var cta = document.createElement("div");
         cta.className = "card-cta";
-        cta.textContent = index < 3 ? "Acessar" : "Ver oferta";
+        cta.textContent = index < 5 ? "Acessar" : "Ver oferta";
 
         info.appendChild(nameEl);
-        info.appendChild(priceEl);
         info.appendChild(cta);
 
         card.appendChild(imgWrap);
