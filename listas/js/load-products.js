@@ -28,7 +28,6 @@
         '<div class="skeleton-info">' +
           '<div class="skeleton-line"></div>' +
           '<div class="skeleton-line skeleton-line--short"></div>' +
-          '<div class="skeleton-line skeleton-line--price"></div>' +
           '<div class="skeleton-line skeleton-line--cta"></div>' +
         '</div>';
       grid.appendChild(skel);
@@ -142,8 +141,6 @@
         cta.textContent = index < 3 ? "Acessar" : "Ver oferta";
 
         info.appendChild(nameEl);
-        info.appendChild(priceEl);
-        info.appendChild(cta);
 
         card.appendChild(imgWrap);
         card.appendChild(info);
