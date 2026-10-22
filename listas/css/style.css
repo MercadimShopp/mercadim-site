@@ -629,8 +629,17 @@ nav ul li a.active {
 }
 @media (max-width: 599px) {
   .card-image {
-    padding-top: 75%;
+    padding-top: 0;
+    height: auto;
   }
+
+  .card-image img {
+    position: static;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
   .card-info {
     padding: var(--space-sm);
     gap: var(--space-xs);
